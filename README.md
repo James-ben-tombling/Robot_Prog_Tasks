@@ -4,7 +4,7 @@ LCAS Robot programming task from the workshop UoL
 1. sudo apt-get update && sudo apt-get upgrade
 2. source /opt/ros/melodic/setup.bash
 3. roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small
-4. if thats fails try killall -9 gzserver then step 3 again 
+4. if thats fails try sudo apt-get purge "*gazebo*" then step 3 again 
 
 make a work space for a package  <br />
 $ mkdir -p ~/<my_ws>/src  <br />
