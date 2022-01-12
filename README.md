@@ -142,7 +142,7 @@ $ cd ~/catkin_ws/src  <br />
 i called mine catkin_ws remember dumby! but yours could be different 
 $ catkin_create_pkg workshops std_msgs rospy roscpp  <br />
 i called mine workshops just to remember where i made it  <br />
-$ source ~/catkin_ws/devel/setup.bash
+$ source ~/catkin_ws/devel/setup.bash <br />
 $ roscd workshops  <br />
 $ mkdir scripts <br />
 $ cd scripts <br />
@@ -153,6 +153,25 @@ if your have visual studio code downloaded and write your own/ base it off mine 
 or <br />
 download it with github with: <br />
 $ wget https://github.com/James-ben-tombling/Robot_Prog_Tasks/blob/main/ThorvaldMover.py <br />
-## Workshop 3
+$ chmod +x ThorvaldMover.py <br />
+Now add the follwing to the previous adjustment you made to cmakelists.txt so it looks like this at the end of the file 
+
+catkin_install_python(PROGRAMS scripts/ThorvaldMover.py <br />
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}<br />
+)
+
+to build your new moving scripts do the following: <br />
+$ cd ~/catkin_ws <br />
+$ catkin_make <br />
+
+in a new terminal launch the thorvald simulation  <br />
+$ source /opt/ros/melodic/setup.bash  <br />
+$ roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small  <br />
+
+then go back to your terminal catking_ws  <br />
+$ cd ~/catkin_ws  <br />
+$ source ./devel/setup.bash  <br />
+$ rosrun workshops ThorvaldMover.py  <br />
+## Workshop 3 
 
 
