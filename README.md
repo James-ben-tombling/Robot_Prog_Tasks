@@ -1,11 +1,11 @@
-# Robot_Prog_Tasks
-LCAS Robot programming task from the workshop UoL
-## how to start my ROS
-$ sudo apt-get update && sudo apt-get upgrade
-$ sudo apt-get install ros-melodic-uol-cmp9767m-base ros-melodic-desktop
-$ source /opt/ros/melodic/setup.bash
-$ roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small
-$ if thats fails try sudo apt-get purge "*gazebo*" then step 3 again 
+# Robot_Prog_Tasks 
+LCAS Robot programming task from the workshop UoL <br />
+## how to start my ROS 
+$ sudo apt-get update && sudo apt-get upgrade  <br />
+$ sudo apt-get install ros-melodic-uol-cmp9767m-base ros-melodic-desktop  <br />
+$ source /opt/ros/melodic/setup.bash  <br />
+$ roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small  <br />
+$ if thats fails try sudo apt-get purge "*gazebo*" then step 3 again   <br />
 
 make a work space for a package  <br />
 $ mkdir -p ~/<my_ws>/src  <br />
