@@ -7,6 +7,8 @@ $ source /opt/ros/melodic/setup.bash  <br />
 $ roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small  <br />
 $ if thats fails try sudo apt-get purge "*gazebo*" then step 3 again   <br />
 
+for ease just name your workspace catkin_ws but up to you i dont care.
+
 make a work space for a package  <br />
 $ mkdir -p ~/<my_ws>/src  <br />
 $ cd ~/<my_ws>/  <br />
@@ -133,6 +135,23 @@ using -r 10 is the rate which is required by ros <br />
 
 ### simple python controller for Thorvald
 
+for this we are going to make a new package in the workspace we have used before (mines called catkin_ws).
+follow this code like to before to setup your package 
+
+$ cd ~/catkin_ws/src  <br />
+i called mine catkin_ws remember dumby! but yours could be different 
+$ catkin_create_pkg workshops std_msgs rospy roscpp  <br />
+i called mine workshops just to remember where i made it  <br />
+$ source ~/catkin_ws/devel/setup.bash
+$ roscd workshops  <br />
+$ mkdir scripts <br />
+$ cd scripts <br />
+
+then either put: <br />
+$ code ThorvaldMover.py <br />
+if your have visual studio code downloaded and write your own/ base it off mine <br />
+or <br />
+download it with github with:
 
 ## Workshop 3
 
