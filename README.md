@@ -103,34 +103,37 @@ $ chmod +x listener.py <br />
 
 Now add the follwing to the previous adjustment you made to cmakelists.txt so it looks like this at the end of the file 
 
-catkin_install_python(PROGRAMS scripts/talker.py scripts/listener.py
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+catkin_install_python(PROGRAMS scripts/talker.py scripts/listener.py<br />
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}<br />
 )
 
-to build your new publisher and subscriber nodes do the following:
-$ cd ~/catkin_ws
-$ catkin_make
+to build your new publisher and subscriber nodes do the following: <br />
+$ cd ~/catkin_ws <br />
+$ catkin_make <br />
 
-to examine the previous nodes we just made do: 
-run 
-$ roscore
+to examine the previous nodes we just made do: <br />
+$ roscore <br />
 
-to start the talker (publisher) in a new terminal:
+to start the talker (publisher) in a new terminal: <br />
 
-$ cd ~/catkin_ws
-$ source ./devel/setup.bash
-$ rosrun beginner_tutorials talker.py
+$ cd ~/catkin_ws <br />
+$ source ./devel/setup.bash <br />
+$ rosrun beginner_tutorials talker.py <br />
 
-next the listener (subscriber) in a new terminal 
+next the listener (subscriber) in a new terminal  <br />
 
-$ cd ~/catkin_ws
-$ source ./devel/setup.bash
-$ rosrun beginner_tutorials listener.py
+$ cd ~/catkin_ws <br />
+$ source ./devel/setup.bash <br />
+$ rosrun beginner_tutorials listener.py <br />
 
-### finding the topic to make Thorvald move and publishing to it 
-to more the thorvald robot using publisher on rostopic:
-$ rostopic pub -r 10  thorvald_001/twist_mux/cmd_vel geometry_msgs/Twist
-using -r 10 is the rate which is required by ros
+### finding the topic to make Thorvald move and publishing to it
+to more the thorvald robot using publisher on rostopic: <br />
+$ rostopic pub -r 10  thorvald_001/twist_mux/cmd_vel geometry_msgs/Twist <br />
+using -r 10 is the rate which is required by ros <br />
+
+### simple python controller for Thorvald
+
+
 ## Workshop 3
 
 
