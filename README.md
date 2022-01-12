@@ -151,8 +151,8 @@ then either put: <br />
 $ code ThorvaldMover.py <br />
 if your have visual studio code downloaded and write your own/ base it off mine <br />
 or <br />
-download it with github with:
-
+download it with github with: <br />
+$ wget https://github.com/James-ben-tombling/Robot_Prog_Tasks/blob/main/ThorvaldMover.py <br />
 ## Workshop 3
 
 
