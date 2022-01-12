@@ -128,7 +128,9 @@ $ source ./devel/setup.bash
 $ rosrun beginner_tutorials listener.py
 
 ### finding the topic to make Thorvald move and publishing to it 
-
+to more the thorvald robot using publisher on rostopic:
+$ rostopic pub -r 10  thorvald_001/twist_mux/cmd_vel geometry_msgs/Twist
+using -r 10 is the rate which is required by ros
 ## Workshop 3
 
 
