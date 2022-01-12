@@ -1,10 +1,11 @@
 # Robot_Prog_Tasks
 LCAS Robot programming task from the workshop UoL
 ## how to start my ROS
-1. sudo apt-get update && sudo apt-get upgrade
-2. source /opt/ros/melodic/setup.bash
-3. roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small
-4. if thats fails try sudo apt-get purge "*gazebo*" then step 3 again 
+$ sudo apt-get update && sudo apt-get upgrade
+$ sudo apt-get install ros-melodic-uol-cmp9767m-base ros-melodic-desktop
+$ source /opt/ros/melodic/setup.bash
+$ roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small
+$ if thats fails try sudo apt-get purge "*gazebo*" then step 3 again 
 
 make a work space for a package  <br />
 $ mkdir -p ~/<my_ws>/src  <br />
@@ -78,5 +79,56 @@ As you can see the final package.xml, without comments and unused tags, is much 
 
 ![image](https://user-images.githubusercontent.com/92380630/148956694-e4b0ff97-7541-4224-a671-5277a7e7b8df.png)
 
+#### writing a publisher node 
+$ roscd beginner_tutorials <br />
+$ mkdir scripts <br />
+$ cd scripts <br />
+$ wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/talker.py <br />
+$ chmod +x talker.py <br />
+
+this goes into the beginner_tutorials and makes a folder called scripts which then has the talker.py file download into it
+
+to see the new talker.py file use: <br />
+$ rosed beginner_tutorials talker.py <br />
+use :x to exit the rosed <br />
+add this to end of cmakelists.txt file in the beginner tutorials folder <br />
+catkin_install_python(PROGRAMS scripts/talker.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+To get the listener.py put the following:<br />
+$ roscd beginner_tutorials/scripts/ <br />
+$ wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/listener.py <br />
+$ chmod +x listener.py <br />
+
+Now add the follwing to the previous adjustment you made to cmakelists.txt so it looks like this at the end of the file 
+
+catkin_install_python(PROGRAMS scripts/talker.py scripts/listener.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+to build your new publisher and subscriber nodes do the following:
+$ cd ~/catkin_ws
+$ catkin_make
+
+to examine the previous nodes we just made do: 
+run 
+$ roscore
+
+to start the talker (publisher) in a new terminal:
+
+$ cd ~/catkin_ws
+$ source ./devel/setup.bash
+$ rosrun beginner_tutorials talker.py
+
+next the listener (subscriber) in a new terminal 
+
+$ cd ~/catkin_ws
+$ source ./devel/setup.bash
+$ rosrun beginner_tutorials listener.py
+
+### finding the topic to make Thorvald move and publishing to it 
+
+## Workshop 3
 
 
