@@ -193,15 +193,30 @@ $ roscd workshops  <br />
 $ cd scripts <br />
 
 then use:
-$ code ThorvaldMover.py <br />
+$ code tflistener.py <br />
 or < br />
+$ wget https://github.com/James-ben-tombling/Robot_Prog_Tasks/commit/c0343f2b3a011ca30145741f4c3faf7edbfda6ed?diff=unified
 
+follow this with <br />
+$ chmod +x tflistener.py
 
+then edit your cmakelists.txt in the workshops folder <br />
+catkin_install_python(PROGRAMS scripts/ThorvaldMover.py scripts/tflistener.py <br />
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}<br />
+)
+
+to build your new tf listner scripts do the following: <br />
+$ cd ~/catkin_ws <br />
+$ catkin_make <br />
 ### lets add our new tf listener 
 
-start her baby 
+start it up in a new terminal baby 
 
 $ source /opt/ros/melodic/setup.bash <br />
 $ roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small  <br />
 
-then again ina new terminal 
+then again in a new terminal 
+
+$ cd ~/catkin_ws  <br />
+$ source ./devel/setup.bash  <br />
+$ rosrun workshops ThorvaldMover.py  <br />
