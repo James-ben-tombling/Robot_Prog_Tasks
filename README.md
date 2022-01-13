@@ -174,4 +174,34 @@ $ source ./devel/setup.bash  <br />
 $ rosrun workshops ThorvaldMover.py  <br />
 ## Workshop 3 
 
+### first update the system 
 
+$ sudo apt-get update && sudo apt-get upgrade <br />
+$ sudo apt-get install \ <br />
+    ros-melodic-opencv-apps \ <br />
+    ros-melodic-rqt-image-view \ <br />
+    ros-melodic-uol-cmp9767m-base \ <br />
+    ros-melodic-find-object-2d \ <br />
+    ros-melodic-video-stream-opencv \ <br />
+    ros-melodic-topic-tools \ <br />
+    ros-melodic-rqt-tf-tree <br />
+    
+close all terminal and start a new one 
+
+$ source ~/catkin_ws/devel/setup.bash <br />
+$ roscd workshops  <br />
+$ cd scripts <br />
+
+then use:
+$ code ThorvaldMover.py <br />
+or < br />
+
+
+### lets add our new tf listener 
+
+start her baby 
+
+$ source /opt/ros/melodic/setup.bash <br />
+$ roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small  <br />
+
+then again ina new terminal 
