@@ -5,11 +5,11 @@ LCAS Robot programming task from the workshop UoL <br />
 2. ROS Node: Basically, nodes are processes that perform some computation or task. The nodes themselves are really software processes but with the capability to register with the ROS Master node and communicate with other nodes in the system. The ROS design idea is that each node is independent and interacts with other nodes using the ROS communication capability. The Master node is described in the ROS Master section to follow.The nodes that transmit data publish the topic name and the type of message to be sent.
 3. ROS message: ROS messages are defined by the type of message and the data format. The ROS package named std_msgs, for example, has messages of type String which consist of a string of characters. Other message packages for ROS have messages used for robot navigation or robotic sensors.
 4. seeing the topic and nodes: <br />
-  - roscore to start the Master and allow nodes to communicate (doesng need to be done if your already done roslaunch.
+  - $ roscore : to start the Master and allow nodes to communicate (doesng need to be done if your already done roslaunch.
 
-  -rosnode list to list the active nodes
+  - $ rosnode list : to list the active nodes
 
-  -rostopic list to list the topics associated with active ROS nodes
+  - $ rostopic list : to list the topics associated with active ROS nodes
 ## how to start my ROS 
 $ sudo apt-get update && sudo apt-get upgrade  <br />
 $ sudo apt-get install ros-melodic-uol-cmp9767m-base ros-melodic-desktop  <br />
