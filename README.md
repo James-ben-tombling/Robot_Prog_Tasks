@@ -7,9 +7,9 @@ LCAS Robot programming task from the workshop UoL <br />
 4. seeing the topic and nodes: <br />
   - roscore to start the Master and allow nodes to communicate (doesng need to be done if your already done roslaunch.
 
-    -rosnode list to list the active nodes
+  -rosnode list to list the active nodes
 
-    -rostopic list to list the topics associated with active ROS nodes
+  -rostopic list to list the topics associated with active ROS nodes
 ## how to start my ROS 
 $ sudo apt-get update && sudo apt-get upgrade  <br />
 $ sudo apt-get install ros-melodic-uol-cmp9767m-base ros-melodic-desktop  <br />
