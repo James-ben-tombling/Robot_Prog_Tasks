@@ -1,5 +1,15 @@
 # Robot_Prog_Tasks 
 LCAS Robot programming task from the workshop UoL <br />
+## Basic stuff you should know 
+1. Rostopic: Some nodes provide information for other nodes, as a camera feed would do, for example. Such a node is said to publish information that can be received by other nodes. The information in ROS is called a topic. Simply, A topic defines the types of messages that will be sent concerning that topic.
+2. ROS Node: Basically, nodes are processes that perform some computation or task. The nodes themselves are really software processes but with the capability to register with the ROS Master node and communicate with other nodes in the system. The ROS design idea is that each node is independent and interacts with other nodes using the ROS communication capability. The Master node is described in the ROS Master section to follow.The nodes that transmit data publish the topic name and the type of message to be sent.
+3. ROS message: ROS messages are defined by the type of message and the data format. The ROS package named std_msgs, for example, has messages of type String which consist of a string of characters. Other message packages for ROS have messages used for robot navigation or robotic sensors.
+4. seeing the topic and nodes: <br />
+  - roscore to start the Master and allow nodes to communicate (doesng need to be done if your already done roslaunch.
+
+    -rosnode list to list the active nodes
+
+    -rostopic list to list the topics associated with active ROS nodes
 ## how to start my ROS 
 $ sudo apt-get update && sudo apt-get upgrade  <br />
 $ sudo apt-get install ros-melodic-uol-cmp9767m-base ros-melodic-desktop  <br />
@@ -185,8 +195,16 @@ $ sudo apt-get install \ <br />
     ros-melodic-video-stream-opencv \ <br />
     ros-melodic-topic-tools \ <br />
     ros-melodic-rqt-tf-tree <br />
-    
-close all terminal and start a new one 
+
+to see the different outputs of a rostopic type: <br />
+
+$ rosmsg show message_type/node
+
+for example:
+
+$ rosmsg show sensor_msgs/LaserScan
+
+close all terminal and start a new one <br />
 
 $ source ~/catkin_ws/devel/setup.bash <br />
 $ roscd workshops  <br />
@@ -202,7 +220,7 @@ $ chmod +x tflistener.py
 
 then edit your cmakelists.txt in the workshops folder <br />
 catkin_install_python(PROGRAMS scripts/ThorvaldMover.py scripts/tflistener.py <br />
-  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}<br />
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION} <br />
 )
 
 to build your new tf listner scripts do the following: <br />
