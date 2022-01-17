@@ -18,7 +18,8 @@ $ sudo apt-get update && sudo apt-get upgrade  <br />
 $ sudo apt-get install ros-melodic-uol-cmp9767m-base ros-melodic-desktop  <br />
 $ source /opt/ros/melodic/setup.bash  <br />
 $ roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small  <br />
-$ if thats fails try sudo apt-get purge "*gazebo*" then step 3 again   <br />
+if thats fails try <br />
+$ sudo apt-get purge "*gazebo*" then step 3 again   <br />
 
 for ease just name your workspace catkin_ws but up to you i dont care.
 
