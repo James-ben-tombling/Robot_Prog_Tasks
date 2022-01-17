@@ -242,3 +242,51 @@ then again in a new terminal
 $ cd ~/catkin_ws  <br />
 $ source ./devel/setup.bash  <br />
 $ rosrun workshops tflistener.py  <br />
+
+### roaming robot that shows the nearest point 
+
+$ source ~/catkin_ws/devel/setup.bash <br />
+$ roscd workshops  <br />
+$ cd scripts <br />
+
+then use:
+$ code tflistener.py <br />
+or < br />
+$ wget https://github.com/James-ben-tombling/Robot_Prog_Tasks/blob/main/tflistener.py
+
+follow this with <br />
+$ chmod +x NearestObstacle.py
+
+then edit your cmakelists.txt in the workshops folder <br />
+catkin_install_python(PROGRAMS scripts/ThorvaldMover.py scripts/tflistener.py scripts/NearestObstacle.py <br />
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION} <br />
+)
+
+to build your new tf listner scripts do the following: <br />
+$ cd ~/catkin_ws <br />
+$ catkin_make <br />
+### lets add our new Nearest Obstacle 
+
+start it up in a new terminal baby! 
+
+$ source /opt/ros/melodic/setup.bash <br />
+$ roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small  <br />
+
+then again in a new terminal 
+
+$ cd ~/catkin_ws  <br />
+$ source ./devel/setup.bash  <br />
+$ rosrun workshops Nearest Obstacle.py  <br />
+
+Note (this is the same method for adding and running the files at the previous files)
+
+after this go to RViz that should be running at click add
+![image](https://user-images.githubusercontent.com/92380630/149778957-ac9c85b6-f2f2-4a95-b0c8-3d920d700092.png)
+
+then add a Pose component 
+
+go to the part of pose that says topic and specify /Nearest_Obstacle 
+
+do this while the scripts NearestObstacle.py is running (it wont show if not running)
+
+
