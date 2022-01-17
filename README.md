@@ -30,13 +30,7 @@ $ catkin_make  <br />
 
 ## Workshop 2
 go to your newly made work space (ws)  <br />
-$ cd ~/<my_ws>/src  <br />
-for making a package turtorial use   <br />
-$ catkin_create_pkg beginner_tutorials std_msgs rospy roscpp  <br />
-this can be anything just fill in the zones of below (dont copy)  <br />
-$ catkin_create_pkg <package_name> [depend1] [depend2] [depend3]  <br />
-in every new terminal you want to use your package you must source as follows  <br />
-$ source ~/<my_ws>/devel/setup.bash  <br />
+
 check the first order dependencies of the package tutorials  <br />
 $ rospack depends1 beginner_tutorials  <br />
 this can be used on any package using  <br />
@@ -250,9 +244,9 @@ $ roscd workshops  <br />
 $ cd scripts <br />
 
 then use:
-$ code tflistener.py <br />
+$ code NearestObstacle.py <br />
 or < br />
-$ wget https://github.com/James-ben-tombling/Robot_Prog_Tasks/blob/main/tflistener.py
+$ wget ***to be filled*** <br />
 
 follow this with <br />
 $ chmod +x NearestObstacle.py
@@ -288,5 +282,35 @@ then add a Pose component
 go to the part of pose that says topic and specify /Nearest_Obstacle 
 
 do this while the scripts NearestObstacle.py is running (it wont show if not running)
+
+## Workshop 4 OpenCV
+
+lets build a package for testing out open CV that depends on rospy and cv_bridge 
+
+follow this 
+
+$ cd ~/<my_ws>/src  <br />
+for making a package my_opencv_test use   <br />
+$ catkin_create_pkg my_opencv_test rospy cv_bridge  <br />
+in every new terminal you want to use your package you must source as follows  <br />
+$ source ~/<my_ws>/devel/setup.bash  <br />
+
+$ roscd my_opencv_test <br />
+$ mkdir scripts <br />
+$ cd scripts <br />
+$ wget ***to be filled***  <br />
+$ chmod +x opencv_test.py <br />
+
+then go to the new cmakelist.txt in the my_opencv_test package and add the folloeing to the very bootm of the file and save it 
+
+catkin_install_python(PROGRAMS scripts/opencv_test.py <br />
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}<br />
+)
+
+
+to build your new opencv_test.py scripts do the following: <br />
+$ cd ~/catkin_ws <br />
+$ catkin_make <br />
+
 
 
