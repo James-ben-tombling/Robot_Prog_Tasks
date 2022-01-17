@@ -10,6 +10,9 @@ LCAS Robot programming task from the workshop UoL <br />
   - $ rosnode list : to list the active nodes
 
   - $ rostopic list : to list the topics associated with active ROS nodes
+  
+5. ROS frame: simply means a frame of reference on which you base your odometry or robot parts
+
 ## how to start my ROS 
 $ sudo apt-get update && sudo apt-get upgrade  <br />
 $ sudo apt-get install ros-melodic-uol-cmp9767m-base ros-melodic-desktop  <br />
