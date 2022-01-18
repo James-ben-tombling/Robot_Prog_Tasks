@@ -17,7 +17,8 @@ LCAS Robot programming task from the workshop UoL <br />
 $ sudo apt-get update && sudo apt-get upgrade  <br />
 $ sudo apt-get install ros-melodic-uol-cmp9767m-base ros-melodic-desktop  <br />
 $ source /opt/ros/melodic/setup.bash  <br />
-$ roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small  <br />
+$ roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small
+ <br />
 if thats fails try <br />
 $ sudo apt-get purge "*gazebo*" then step 3 again   <br />
 
@@ -311,7 +312,7 @@ $ `roslaunch --files bacchus_gazebo vineyard_demo.launch`
 
 follow this 
 
-$ `cd ~/<my_ws>/src`  <br />
+
 for making a package my_opencv_test use   <br />
 $ `catkin_create_pkg my_opencv_test rospy cv_bridge`  <br />
 in every new terminal you want to use your package you must source as follows  <br />
@@ -341,8 +342,47 @@ $ `source ./devel/setup.bash` <br />
 $ `rosrun my_opencv_test opencv_test.py `
 
 ## Workhop 5 geometry and 3D
+first go into catkin_ws and download the turturial package and build with the following:
+
+download this package https://github.com/LCAS/CMP9767M.git <br />
+move uol_cmp9767m_tutorial to ~/catkin/src 
+
+$ `cd ~/catkin_ws/src`  <br />
+
+check it in there then:
+
+$ `cd ~/catkin_ws` <br />
+$ `catkin_make` <br />
+
+in a fresh terminal launch vinyard with:
+$` roslaunch bacchus_gazebo vineyard_demo.launch world_name:=vineyard_small`
+
+in another terminal 
+$ `cd ~/catkin_ws` <br />
+$ `source ./devel/setup.bash` <br />
+$ `rosrun uol_cmp9767m_tutorial image_projection_1.py 
+
+then try 
+
+$ `rosrun uol_cmp9767m_tutorial image_projection_2.py`
+
+should get a blue dot about 5 metres on the floor infront of thorvald
+
+in gazebo place a sphere from the top bar infront of the thorvald then 
+go too:
+
+![image](https://user-images.githubusercontent.com/92380630/149982801-7e1fc075-4624-4135-9c41-652253f9b34f.png)
 
 
+$ `code image_projection_2.py `
+
+and add the coordinate pose of the sphere to the scripts pose and change the frame_id from thorval_001/base_link to /map so it looks something like this: 
+
+![image](https://user-images.githubusercontent.com/92380630/149982623-37937b55-dd76-45be-a7c9-3fbc9a047c41.png)
+
+then go back to the terminal and rerun 
+
+$ `rosrun uol_cmp9767m_tutorial image_projection_2.py`
 
 ## Workshop 8 Topological Navigation 
 
