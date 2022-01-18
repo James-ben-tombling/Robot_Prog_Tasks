@@ -287,6 +287,7 @@ do this while the scripts NearestObstacle.py is running (it wont show if not run
 
 Update: sudo apt-get update && sudo apt-get upgrade
 Install today's packages:
+```
 
 sudo apt-get install \
     ros-melodic-opencv-apps \
@@ -297,30 +298,30 @@ sudo apt-get install \
     ros-melodic-find-object-2d \
     ros-melodic-video-stream-opencv \
     ros-melodic-image-view
-
+```
 run this to see all the nodes of a specific .launch file 
 
-roslaunch --nodes bacchus_gazebo vineyard_demo.launch
+$ `roslaunch --nodes bacchus_gazebo vineyard_demo.launch`
 
 run this to see the following files included in a .launch file 
 
-roslaunch --files bacchus_gazebo vineyard_demo.launch
+$ `roslaunch --files bacchus_gazebo vineyard_demo.launch`
 
 ### lets build a package for testing out open CV that depends on rospy and cv_bridge 
 
 follow this 
 
-$ cd ~/<my_ws>/src  <br />
+$ `cd ~/<my_ws>/src`  <br />
 for making a package my_opencv_test use   <br />
-$ catkin_create_pkg my_opencv_test rospy cv_bridge  <br />
+$ `catkin_create_pkg my_opencv_test rospy cv_bridge`  <br />
 in every new terminal you want to use your package you must source as follows  <br />
-$ source ~/<my_ws>/devel/setup.bash  <br />
+$ `source ~/<my_ws>/devel/setup.bash`  <br />
 
-$ roscd my_opencv_test <br />
-$ mkdir scripts <br />
-$ cd scripts <br />
-$ wget https://github.com/James-ben-tombling/Robot_Prog_Tasks/blob/main/opencv_test.py  <br />
-$ chmod +x opencv_test.py <br />
+$ `roscd my_opencv_test` <br />
+$ `mkdir scripts` <br />
+$ `cd scripts` <br />
+$ `wget https://github.com/James-ben-tombling/Robot_Prog_Tasks/blob/main/opencv_test.py`  <br />
+$ `chmod +x opencv_test.py` <br />
 
 then go to the new cmakelist.txt in the my_opencv_test package and add the folloeing to the very bootm of the file and save it 
 
@@ -330,12 +331,12 @@ catkin_install_python(PROGRAMS scripts/opencv_test.py <br />
 
 
 to build your new opencv_test.py scripts do the following: <br />
-$ cd ~/catkin_ws <br />
-$ catkin_make <br />
+$ `cd ~/catkin_ws` <br />
+$ `catkin_make` <br />
 
 in a new terminal wite the following to start the opencv_test.py
 
-$ cd ~/catkin_ws
-$ source ./devel/setup.bash
+$ `cd ~/catkin_ws` <br />
+$ `source ./devel/setup.bash` <br />
 $ `rosrun my_opencv_test opencv_test.py `
 
