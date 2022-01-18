@@ -270,7 +270,7 @@ then again in a new terminal
 
 $ cd ~/catkin_ws  <br />
 $ source ./devel/setup.bash  <br />
-$ rosrun workshops Nearest Obstacle.py  <br />
+$ rosrun workshopsNearest Obstacle.py  <br />
 
 Note (this is the same method for adding and running the files at the previous files)
 
@@ -333,5 +333,9 @@ to build your new opencv_test.py scripts do the following: <br />
 $ cd ~/catkin_ws <br />
 $ catkin_make <br />
 
+in a new terminal wite the following to start the opencv_test.py
 
+$ cd ~/catkin_ws
+$ source ./devel/setup.bash
+$ rosrun my_opencv_test opencv_test.py 
 
