@@ -319,7 +319,7 @@ $ source ~/<my_ws>/devel/setup.bash  <br />
 $ roscd my_opencv_test <br />
 $ mkdir scripts <br />
 $ cd scripts <br />
-$ wget ***to be filled***  <br />
+$ wget https://github.com/James-ben-tombling/Robot_Prog_Tasks/blob/main/opencv_test.py  <br />
 $ chmod +x opencv_test.py <br />
 
 then go to the new cmakelist.txt in the my_opencv_test package and add the folloeing to the very bootm of the file and save it 
@@ -337,5 +337,5 @@ in a new terminal wite the following to start the opencv_test.py
 
 $ cd ~/catkin_ws
 $ source ./devel/setup.bash
-$ rosrun my_opencv_test opencv_test.py 
+$ `rosrun my_opencv_test opencv_test.py `
 
