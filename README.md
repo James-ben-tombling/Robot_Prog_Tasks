@@ -285,7 +285,28 @@ do this while the scripts NearestObstacle.py is running (it wont show if not run
 
 ## Workshop 4 OpenCV
 
-lets build a package for testing out open CV that depends on rospy and cv_bridge 
+Update: sudo apt-get update && sudo apt-get upgrade
+Install today's packages:
+
+sudo apt-get install \
+    ros-melodic-opencv-apps \
+    ros-melodic-rqt-image-view \
+    ros-melodic-image-geometry \
+    ros-melodic-uol-cmp9767m-base \
+    ros-melodic-uol-cmp9767m-tutorial \
+    ros-melodic-find-object-2d \
+    ros-melodic-video-stream-opencv \
+    ros-melodic-image-view
+
+run this to see all the nodes of a specific .launch file 
+
+roslaunch --nodes bacchus_gazebo vineyard_demo.launch
+
+run this to see the following files included in a .launch file 
+
+roslaunch --files bacchus_gazebo vineyard_demo.launch
+
+### lets build a package for testing out open CV that depends on rospy and cv_bridge 
 
 follow this 
 
