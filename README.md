@@ -341,3 +341,8 @@ $ `source ./devel/setup.bash` <br />
 $ `rosrun my_opencv_test opencv_test.py `
 
 ## Workhop 5 geometry and 3D
+
+
+
+## Workshop 8 Topological Navigation 
+
