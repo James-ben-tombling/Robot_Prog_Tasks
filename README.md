@@ -384,5 +384,8 @@ then go back to the terminal and rerun
 
 $ `rosrun uol_cmp9767m_tutorial image_projection_2.py`
 
+you should get something that looks like this now 
+![image](https://user-images.githubusercontent.com/92380630/149983266-c73e6535-d1ae-42a2-90c6-9399582494d4.png)
+
 ## Workshop 8 Topological Navigation 
 
