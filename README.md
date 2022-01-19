@@ -388,6 +388,35 @@ you should get something that looks like this now
 ![image](https://user-images.githubusercontent.com/92380630/149983266-c73e6535-d1ae-42a2-90c6-9399582494d4.png)
 
 ###
+## Workshop 6 
+### EKF
+this shit is glitch AF you can of you like 
+
+### Adaptive Monte carlo Localization (key for CW)
+
+run our simulation without the perfect (fake) localization 
+
+$ `roslaunch bacchus_gazebo vineyard_demo.launch fake_localisation:=false`
+
+then launch the amcl node in anew terminal 
+
+$ `cd ~/catkin_ws` <br />
+$ `source ./devel/setup.bash` <br />
+$ `roslaunch uol_cmp9767m_tutorial amcl.launch`
+
+In `rviz` add the following visualisation: `particecloud`.
+
+now lets make this bastard move, in a ew terminal 
+
+$ `rosrun key_teleop key_teleop.py key_vel:=/thorvald_001/teleop_joy/cmd_vel
+
+if things mess up or the robot get lost try `
+
+$ `rosservice call /global_localization`
+
+this should re-initialise the particles all over the map (do in a new terminal) then carry on moving 
+
+
 
 ## Workshop 7 Naviagtion 
 
@@ -420,9 +449,25 @@ change their colours so you can differentiate
 at the top bar of Rviz go to "panels/tool properties" and put put `thorvald_001` prepending th existing topic in 2D Nav Goal 
 
 you should now be able to click 2D Nav Goal and point on rviz and thorvald will move there 
-
+### obstacle avoidnace 
 play with `config/costmap_common_parameter.yaml` file so the robot doesnt get stuck near borders (edit values of `global_inflation`) , change the values of `local_inflation_layer` and `obstacle_layer`
-## Workshop 8 Topological Navigation 
+### global planner 
+to increase the frequency of global re-planning change the planner_frequency variable in `uol_cmp9767m_tutorial/config/planners.yaml` to 0.1 so then it re-plans every 10s 
+
+in the same file `planners.yaml` test out the carrot planner by un commenting it and commenting out navfn in the base_global_planner variable
+
+in my view the carrot planner was worse than the navfn planner 
+
+try changinging `use_dijkstra` to true and compaore the difference 
+
+result meh!
+
+### local planner
+change the `sim_time` in the `TrajectoryPlannerROS` function to 10 seconds and observe the difference 
+and test out the commented out local planner method.
+
+
+### Workshop 8 Topological Navigation 
 
 * Update: `sudo apt-get update && sudo apt-get upgrade
 
