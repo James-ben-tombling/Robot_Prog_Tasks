@@ -391,7 +391,16 @@ you should get something that looks like this now
 
 make the same ball red then run the following?
 
-$ `uol_cmp9767m_tutorial image_projection_3.py`
+$ `rosrun uol_cmp9767m_tutorial image_projection_3.py`
+
+gazebo shouldlook like this now 
+![image](https://user-images.githubusercontent.com/92380630/150148446-761e046c-99ca-4dc4-85cb-39d6de17f117.png)
+
+you should get rulsts that look like this 
+![image](https://user-images.githubusercontent.com/92380630/150148181-ffa07fd4-9879-4167-9eb0-7778320f17af.png)
+![image](https://user-images.githubusercontent.com/92380630/150148532-c9a1f46d-b03d-433b-a160-e342b31d34af.png)
+
+
 
 ## Workshop 6 
 ### EKF
