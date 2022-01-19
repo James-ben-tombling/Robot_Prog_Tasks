@@ -389,12 +389,45 @@ you should get something that looks like this now
 
 ###
 
-## Workshop 8 Topological Navigation 
+## Workshop 7 Naviagtion 
 
-* Update: `sudo apt-get update && sudo apt-get upgrade`
+* Update: $ `sudo apt-get update && sudo apt-get upgrade`
 
 * Install today's packages: 
     ```
+    sudo apt-get install \
+        ros-melodic-robot-localization \
+        ros-melodic-topological-navigation \
+        ros-melodic-amcl \
+        ros-melodic-fake-localization \
+        ros-melodic-carrot-planner
+    ```
+ 
+launch the defualt move_base 
+
+$ `roslaunch bacchus_gazebo vineyard_demo.launch launch_move_base:=false`
+
+then start the move base node 
+
+$ `roslaunch uol_cmp9767m_tutorial move_base.launch`
+
+then go to Rviz and go " Add/By topic/" then `thorvald_001/move_base/TrajectoryPlannerROS/global_plan`
+
+repeat this step for `thorvald_001/move_base/TrajectoryPlannerROS/local_plan`
+
+change their colours so you can differentiate 
+
+at the top bar of Rviz go to "panels/tool properties" and put put `thorvald_001` prepending th existing topic in 2D Nav Goal 
+
+you should now be able to click 2D Nav Goal and point on rviz and thorvald will move there 
+
+play with `config/costmap_common_parameter.yaml` file so the robot doesnt get stuck near borders (edit values of `global_inflation`) , change the values of `local_inflation_layer` and `obstacle_layer`
+## Workshop 8 Topological Navigation 
+
+* Update: `sudo apt-get update && sudo apt-get upgrade
+
+* Install today's packages: 
+    ``` 
     sudo apt-get install \
         ros-melodic-topological-utils \
         ros-melodic-topological-navigation \
