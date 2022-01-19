@@ -391,3 +391,92 @@ you should get something that looks like this now
 
 ## Workshop 8 Topological Navigation 
 
+* Update: `sudo apt-get update && sudo apt-get upgrade`
+
+* Install today's packages: 
+    ```
+    sudo apt-get install \
+        ros-melodic-topological-utils \
+        ros-melodic-topological-navigation \
+        ros-melodic-topological-navigation-msgs \
+        ros-melodic-strands-navigation
+    ```
+* First, make sure that you have a working copy (fork and clone into your catkin workspace) of the course's repository as described [here](https://github.com/LCAS/CMP9767M/wiki/Workshop-2---ROS-workspaces-and-actual-coding#task-5-code-on-github-or-where-you-want). The tutorial code is included in the `uol_cmp9767m_tutorial` folder. If you have your workspace set up already in the previous workshops, please pull the recent update from the repository as some of the workshop files have been updated recently.
+
+###  Map Demo
+
+In this task, we will run the topological navigation demonstrated in the lecture. You will learn how a topological map is defined, how it is loaded to the database (i.e. MongoDB), and how to make the robot move to different waypoints (nodes) using RVIZ.
+
+1. The topological map for the demo is available in `uol_cmp9767m_tutorial/maps/test.yaml`. Look at this file first, and try to understand how a topological map is specified.
+2. Create a folder (named `mongodb`) in your user home directory. MongoDB will store all database files required to run our topological map. This step is required only once.
+3. Launch the simulation setup
+    - `roslaunch bacchus_gazebo vineyard_demo.launch`
+    - `roslaunch uol_cmp9767m_tutorial topo_nav.launch`, if you work with a dockerised distribution (e.g. at home or using a remote access) please use the following line instead which will help to address some issues with the MongoDB database: `HOSTNAME=0.0.0.0 roslaunch uol_cmp9767m_tutorial topo_nav.launch`.
+    - You will see some warnings in the terminal where you launched `topo_nav.launch` saying the pointset is not found in the `message_store`. This is because we haven't loaded the topological map to the mongodb yet. Once you do the next step, that warning should stop.
+    - `rosrun topological_utils load_yaml_map.py $(rospack find uol_cmp9767m_tutorial)/maps/test.yaml`. This step is required only once.
+    - open the topological map visualisation config for RVIZ in `uol_cmp9767m_tutorial/config/topo_nav.rviz`.
+    - click the green arrows at the nodes seen in RVIZ to send `topological_navigation` goals to the robot.
+
+Navigate between different nodes and note the robot's behaviour on edges with a different directionality. 
+
+Note: you can also use your own `move_base` setup from the previous workshop. Topological navigation is currently configured to run with the DWA planner, so remember to switch your `base_local_planner` to `dwa_local_planner/DWAPlannerROS` in the `uol_cmp9767m_tutorial/config/planners.yaml`.
+
+### Map Modifications
+
+We have already seen some service calls in the lecture about creating a new topological map directly into MongoDB, rather than loading a map file. In this task, we will use the same service calls to modify the existing topological map we used in Task 1. Please note that to see any new changes made to the map in RVIZ, you have to manually update the map by issuing `rostopic pub /update_map std_msgs/Time "data:
+  secs: 0
+  nsecs: 0"`.
+
+1. In a terminal, add a node to the map
+```
+rosservice call /topological_map_manager/add_topological_node "
+name: WayPoint6
+pose:
+  position:
+    x: -2.0
+    y: -2.0
+    z: 0.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
+add_close_nodes: false"
+```
+2. Add a uni-directional edge to the new node (`WayPoint6`) from an existing node (`WayPoint0`)
+```
+rosservice call /topological_map_manager/add_edges_between_nodes "
+origin: WayPoint0
+destination: WayPoint6
+action: move_base
+edge_id: WayPoint0_WayPoint6"
+```
+3. Add a bi-directional edge between the new node (`WayPoint6`) and an existing node (`WayPoint3`)
+```
+rosservice call /topological_map_manager/add_edges_between_nodes "
+origin: WayPoint6
+destination: WayPoint3
+action: move_base
+edge_id: WayPoint6_WayPoint3"
+```
+```
+rosservice call /topological_map_manager/add_edges_between_nodes "
+origin: WayPoint3
+destination: WayPoint6
+action: move_base
+edge_id: WayPoint3_WayPoint6"
+```
+3. Visualise the map in `rviz`. Navigate the robot to the new node.
+4. *Optional*: Save the modified map as a yaml file.
+```
+rosrun topological_utils map_to_yaml.py test $(rospack find uol_cmp9767m_tutorial)/maps/test_mod.yaml
+```
+
+### Action Client
+
+In this task, you will create an action client that can send goals to the robot's topological navigation action. 
+
+1. Follow the steps in Task 1 to launch the topological_navigation stack.
+2. In another terminal run `rosrun uol_cmp9767m_tutorial set_topo_nav_goal.py` and see what is happening. 
+3. Look at the script (uol_cmp9767m_tutorial/scritps/set_topo_nav_goal.py) to see how the goals are sent. 
+4. Modify the script to send the robot to the new node added in Task 2.
