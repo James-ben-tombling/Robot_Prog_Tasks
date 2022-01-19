@@ -471,7 +471,6 @@ edge_id: WayPoint3_WayPoint6"
 ```
 rosrun topological_utils map_to_yaml.py test $(rospack find uol_cmp9767m_tutorial)/maps/test_mod.yaml
 ```
-
 ### Action Client
 
 In this task, you will create an action client that can send goals to the robot's topological navigation action. 
@@ -480,3 +479,6 @@ In this task, you will create an action client that can send goals to the robot'
 2. In another terminal run `rosrun uol_cmp9767m_tutorial set_topo_nav_goal.py` and see what is happening. 
 3. Look at the script (uol_cmp9767m_tutorial/scritps/set_topo_nav_goal.py) to see how the goals are sent. 
 4. Modify the script to send the robot to the new node added in Task 2.
+
+in the edn it should look like this:
+![image](https://user-images.githubusercontent.com/92380630/150128544-93e62753-513d-43bf-8fc9-473cde4c527f.png)
