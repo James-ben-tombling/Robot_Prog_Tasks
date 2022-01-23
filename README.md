@@ -181,6 +181,7 @@ then go back to your terminal catking_ws  <br />
 $ cd ~/catkin_ws  <br />
 $ source ./devel/setup.bash  <br />
 $ rosrun workshops ThorvaldMover.py  <br />
+
 ## Workshop 3 
 
 ### first update the system 
@@ -400,6 +401,35 @@ you should get rulsts that look like this
 ![image](https://user-images.githubusercontent.com/92380630/150148181-ffa07fd4-9879-4167-9eb0-7778320f17af.png)
 ![image](https://user-images.githubusercontent.com/92380630/150148532-c9a1f46d-b03d-433b-a160-e342b31d34af.png)
 
+### pointclouds (Lets f*cking GOOO!)
+
+Publish a static transform between the base_link and pcd_link at 10 Hz 
+
+e.g. $ `tf static_transform_publisher 0 0 0 0 0 0 base_link pcd_link 10`
+
+base_link for us is `map` and pcd_link is `cloud_pcd` and `10` specifies the rate in ms
+
+so use: 
+
+$`rosrun tf static_transform_publisher 0 0 0 0 0 0 map cloud_pcd 10`
+
+in a new terminal you need to send the .pcd file data to the right topic and get  fram of refernece 
+
+you will need to use this:
+
+ $ `rosrun pcl_ros pcd_to_pointcloud cloud_file.pcd 0.1 _frame_id:=/odom `
+ 
+for us this will look like 
+
+$ `rosrun pcl_ros pcd_to_pointcloud uol_cmp67m_tutorial/models/ism_train_wolf.pcd 0.1 _frame_id:=/map`
+
+you must reference the map or else ic cant transform the data with TF 
+
+next go into Rviz and go Add/by topic/cloud_pcd 
+
+youll need to adjust the size of the particles from 0.01 m to 1.0m and zoom out, it should look like this 
+
+![image](https://user-images.githubusercontent.com/92380630/150698628-597d7894-caa3-4830-bad3-59e0221c3edf.png)
 
 
 ## Workshop 6 
@@ -481,7 +511,7 @@ change the `sim_time` in the `TrajectoryPlannerROS` function to 10 seconds and o
 and test out the commented out local planner method.
 
 
-### Workshop 8 Topological Navigation 
+## Workshop 8 Topological Navigation 
 
 * Update: `sudo apt-get update && sudo apt-get upgrade
 
